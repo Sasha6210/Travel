@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<section class="breadcrumbs-custom-inset">
+  <div class="breadcrumbs-custom context-dark bg-overlay-60">
+    <div class="container">
+      <h2 class="breadcrumbs-custom-title">{{ course.name }}</h2>
+      <ul class="breadcrumbs-custom-path">
+        <li><a href="/"></a>Home</li>
+        <li><a href="{% url 'login' %}"></a>Courses</li>
+        <li class="active">{{ course.name }}</li>
+      </ul>
+    </div>
+    <div class="box-position" style="background-image: url(images/breadcrumbs-bg.jpg);"></div>
+  </div>
+</section>
+ <!-- Discover New Horizons-->
+ <section class="section section-sm section-first bg-default text-md-left">
+ <form method="post">
+    {% csrf_token %}
+    {% if from.errors %}
+    {{form.errors}}
+    {% endif %}
+
+    {{ form.username }}
+    {{ form.password }}
+    <button type="submit">Login!</button>
+    <p>Якщо у ваас немає акаунту, <a href="/users/register">створіть його</a></p>
+ </form>
+</section>
+{% endblock content %}

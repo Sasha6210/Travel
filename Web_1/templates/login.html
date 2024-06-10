@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<section class="section section-sm section-last bg-default text-left">
+    <div class="container">
+      <article class="title-classic">
+        <div class="title-classic-title">
+          <h3>Get in touch</h3>
+        </div>
+        <div class="title-classic-text">
+          <p>login and password</p>
+        </div>
+      </article>
+      <form class="rd-form rd-form-variant-2 rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="">
+        {% csrf_token %}
+        <div class="row row-14 gutters-14">
+          {% if form.message.errors %}
+        <div class="form-wrap">
+          <strong>{{ form.login }}</strong>
+        </div>
+          {% endif %}
+          <div class="col-md-4">
+            <div class="form-wrap">
+              {{ form.password }}
+            </div>
+          </div>
+          <div class="col-md-4">
+          <div>
+          </div>
+            <div class="form-wrap">
+              {{ form.email }}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-wrap">
+              {{ form.phone }}
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-wrap">
+              {{ form.text }}
+            </div>
+          </div>
+        </div>
+        <button class="button button-primary button-pipaluk" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+{% endblock content %}
